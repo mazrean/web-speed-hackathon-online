@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="preload" type="text/css" href="https://fonts.googleapis.com/css?family=Baloo+Thambi+2:700&display=swap" />
+    <link rel="preload" type="text/css" href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:700&display=swap" />
     <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
     <script
       type="text/javascript"
       src="/<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"
     ></script>
     <% } %>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Baloo+Thambi+2:700&display=swap" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:700&display=swap" />
     <link rel="stylesheet" type="text/css" href="/app.css" />
   </head>
   <body>
