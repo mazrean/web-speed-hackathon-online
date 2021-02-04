@@ -1,11 +1,10 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import Icon from '../../../../assets/thumbs-up.svg';
 
 export function AmidaLikeButton({ likeCount, onClick }) {
   return (
     <button type="button" className="entry-AmidaLikeButton" onClick={onClick}>
-      <FontAwesomeIcon icon={faThumbsUp} />
+      <Icon />
       <span className="entry-AmidaLikeButton__count">{likeCount}</span>
     </button>
   );
