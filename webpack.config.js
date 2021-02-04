@@ -49,7 +49,7 @@ module.exports = {
               name: "[name].[ext].webp",
             },
           },
-          "webp-loader?{quality: 10}",
+          "webp-loader?{quality: 50}",
         ],
       },
     ],

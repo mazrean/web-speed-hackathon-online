@@ -1,10 +1,10 @@
 import React from 'react';
-import _ from 'lodash';
+import {chunk} from 'lodash-es';
 
 import { BlogCard } from '../BlogCard';
 
 export function BlogCardList({ list, columnCount }) {
-  const rows = _.chunk(list, columnCount);
+  const rows = chunk(list, columnCount);
 
   return (
     <div className="blog-list-BlogCardList">
