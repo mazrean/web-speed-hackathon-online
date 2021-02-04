@@ -42,9 +42,15 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpe?g|gif)$/,
-        use: {
-          loader: 'file-loader',
-        },
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext].webp",
+            },
+          },
+          "webp-loader?{quality: 10}",
+        ],
       },
     ],
   },
