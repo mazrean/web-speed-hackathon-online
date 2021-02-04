@@ -4,6 +4,7 @@ const path = require('path');
 
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src', 'app.js'),
@@ -48,7 +49,13 @@ module.exports = {
 
   target: 'web',
 
-  devtool: 'inline-source-map',
+  devtool: 'none',
 
   mode: 'none',
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin(),
+    ],
+  }
 };
