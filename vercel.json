@@ -1,0 +1,5 @@
+{
+  "routes": [
+    { "src": "/api/(.*)", "dest": "https://web-speed-hackathon-api.herokuapp.com/api/$1" }
+  ]
+}
