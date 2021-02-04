@@ -23,16 +23,9 @@ export function BlogHome() {
   useEffect(() => {
     setHasFetchFinished(false);
 
-    (async () => {
-      try {
-        await fetchBlog({ dispatch, blogId });
-        await fetchEntryList({ dispatch, blogId });
-      } catch {
-        await renderNotFound({ dispatch });
-      }
-
-      setHasFetchFinished(true);
-    })();
+    Promise.all(fetchBlog({ dispatch, blogId }), fetchEntryList({ dispatch, blogId })).catch(async ()=>{
+      await renderNotFound({ dispatch });
+    }).then(() => setHasFetchFinished(true))
   }, [dispatch, blogId]);
 
   if (!hasFetchFinished) {
