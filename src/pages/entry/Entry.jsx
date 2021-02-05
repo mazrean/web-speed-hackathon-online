@@ -35,14 +35,6 @@ export function Entry() {
     }).then(()=>setHasFetchFinished(true))
   }, [dispatch, blogId, entryId]);
 
-  if (!hasFetchFinished) {
-    return (
-      <Helmet>
-        <title>Amida Blog: あみぶろ</title>
-      </Helmet>
-    );
-  }
-
   return (
     <>
       <Helmet>
@@ -51,7 +43,7 @@ export function Entry() {
         </title>
       </Helmet>
       <div className="Entry">
-        <BlogHeader blog={blog} />
+        <BlogHeader blog={hasFetchFinished?blog:""} />
 
         <Main>
           <article className="Entry__contents">
@@ -78,7 +70,7 @@ export function Entry() {
             <header className="Entry__comment-list-header">
               <h2>コメント一覧</h2>
             </header>
-            <CommentList list={commentList} />
+            <CommentList list={hasFetchFinished?commentList:[]} />
           </article>
         </Main>
       </div>

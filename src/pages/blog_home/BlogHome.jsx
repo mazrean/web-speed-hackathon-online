@@ -28,14 +28,6 @@ export function BlogHome() {
     }).then(() => setHasFetchFinished(true))
   }, [dispatch, blogId]);
 
-  if (!hasFetchFinished) {
-    return (
-      <Helmet>
-        <title>Amida Blog: あみぶろ</title>
-      </Helmet>
-    );
-  }
-
   return (
     <>
       <Helmet>
@@ -47,7 +39,7 @@ export function BlogHome() {
         <Main>
           <section className="BlogHome__entry-list">
             <h2 className="BlogHome__entry-list-title">記事一覧</h2>
-            <EntryList blogId={blogId} list={entryList} />
+            <EntryList blogId={blogId} list={hasFetchFinished?entryList:[]} />
           </section>
         </Main>
       </div>
