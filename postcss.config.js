@@ -15,7 +15,9 @@ module.exports = {
 
     autoprefixer(),
 
-    customProperties(),
+    customProperties({
+      preserve: false
+    }),
     cssnano({
       preset: 'default',
     }),
