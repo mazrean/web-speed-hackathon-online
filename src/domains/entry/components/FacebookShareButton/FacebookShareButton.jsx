@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import $ from 'jquery';
 
 const FACEBOOK_SDK =
   'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0';
@@ -11,12 +10,16 @@ export function FacebookShareButton() {
       return;
     }
 
-    const script$ = $(
-      `<script crossorigin="anonymous" src=${FACEBOOK_SDK}></script>`,
-    ).appendTo('body');
+    const b = getElementByTagName("body");
+    const ele = b.items(0);
+
+    const new_ele = document.createElement("script");
+    new_ele.setAttribute("crossorigin", "anonymous")
+    new_ele.setAttribute("src", FACEBOOK_SDK)
+    ele.appendChild(new_ele)
 
     return () => {
-      script$.remove();
+      new_ele.remove();
     };
   }, []);
 

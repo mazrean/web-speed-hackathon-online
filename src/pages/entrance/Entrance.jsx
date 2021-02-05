@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {chain} from 'lodash-es';
 import Helmet from 'react-helmet';
 
 import { renderNotFound } from '../../domains/error/error_actions';
@@ -68,7 +67,7 @@ export function Entrance() {
   }, []);
 
   if (pickups.length === 0 && blogList.length !== 0) {
-    setPickups(chain(blogList).take(10).shuffle().take(4).value());
+    setPickups(blogList.slice(0, 9).sort(function() { Math.random() - .5; }).slice(0, 3));
   }
 
   return (

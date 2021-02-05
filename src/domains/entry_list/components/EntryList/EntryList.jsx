@@ -1,14 +1,12 @@
 import React from 'react';
-import {chain} from 'lodash-es';
 import { Link } from 'react-router-dom';
-import moment from 'moment-timezone';
 
 import { ProportionalImage } from '../../../../foundation/components/ProportionalImage';
 
 export function EntryList({ blogId, list }) {
   return (
     <ul className="entry-list-EntryList">
-      {chain(list)
+      {list
         .filter((entry) => entry.publish_flag === 'open')
         .map((entry, i) => {
           return (
@@ -27,10 +25,10 @@ export function EntryList({ blogId, list }) {
                 <div className="entry-list-EntryList__text">
                   <time
                     className="entry-list-EntryList__published-at"
-                    dateTime={moment(entry.published_at).toISOString(true)}
-                    title={moment(entry.published_at).toISOString(true)}
+                    dateTime={new Date(entry.published_at).toISOString(true)}
+                    title={new Date(entry.published_at).toISOString(true)}
                   >
-                    {moment(entry.published_at).format('YYYY-MM-DD')}
+                    {new Date(entry.published_at).format('YYYY-MM-DD')}
                   </time>
                   <p className="entry-list-EntryList__title">{entry.title}</p>
                 </div>
